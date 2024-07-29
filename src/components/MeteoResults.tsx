@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Coordinates } from "../types/Coordinates"
 import { getCoordinates } from "../api/CoordinatesAPI"
+import { getWeather } from "../api/OpenWeatherAPI"
 
 interface IMeteoResults {
     searchText: string
@@ -11,10 +12,10 @@ export const MeteoResults: React.FC<IMeteoResults> = (props) => {
     const [coordinates, setCoordinates] = useState<Coordinates | undefined>()
 
     useEffect(()=> {
-        console.log('trigger!')
         const getData = async () => {
             const data = await getCoordinates(props.searchText)
             setCoordinates(data)
+            getWeather(data.lat, data.long)
         }
 
         if(props.searchText) {
