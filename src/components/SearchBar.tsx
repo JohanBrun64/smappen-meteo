@@ -18,7 +18,7 @@ export const SearchBar: React.FC<ISearchBar> = (props) => {
                 onChange={searchHandler}
                 variant="outlined"
                 fullWidth
-                label="Search"
+                label="Search location for weather"
             />
         </div>
         </>

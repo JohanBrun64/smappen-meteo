@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { getCoordinates } from "../api/CoordinatesAPI"
 import { getWeather } from "../api/OpenWeatherAPI"
-import { Weather } from "../types/Weather"
+import { DayWeather } from "../types/Weather"
+import { groupWeatherByDay } from "../utils/GroupWeatherByDay"
 
 interface IMeteoResults {
     searchText: string
@@ -9,26 +10,35 @@ interface IMeteoResults {
 
 export const MeteoResults: React.FC<IMeteoResults> = (props) => {
 
-    const [weather, setWeather] = useState<Weather[] | undefined>()
+    const [dayWeather, setDayWeather] = useState<DayWeather[] | undefined>()
 
-    useEffect(()=> {
+    useEffect(() => {
         const getData = async () => {
             const data = await getCoordinates(props.searchText)
-            setWeather(await getWeather(data.lat, data.long))
+            const weather = await getWeather(data.lat, data.long)
+            setDayWeather(groupWeatherByDay(weather))
         }
 
-        if(props.searchText) {
+        if (props.searchText) {
             getData()
-            .catch(console.error)   
+                .catch(console.error)
         }
-    },[props.searchText])
+    }, [props.searchText])
 
-    if(weather && props.searchText.length) {
-        return(
+    if (dayWeather && props.searchText.length) {
+        return (
             <>
-            weather is {weather[0].temperature}°C
+                {dayWeather.map((element) => (
+                    <>
+                    <h4 key={element.day.toString()}>{element.day}</h4>
+                    {element.temperatures.map((el) => (
+                        <div key={el.value.toString()}>Temperature for {el.date.toLocaleTimeString('fr-FR', {timeZone: 'CET'})} is {Math.round(el.value)}°C<br /></div>
+                    ))}
+                    </>
+                ))}
             </>
         )
+
     } else {
         return <>No coordinates yet!</>
     }

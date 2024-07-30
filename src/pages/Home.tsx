@@ -8,7 +8,6 @@ export const Home: React.FC = () => {
 
     return (
         <>
-        This is Home!
         <SearchBar setSearchText={setSearchText}/>
         <MeteoResults searchText={searchText}/>
         </>

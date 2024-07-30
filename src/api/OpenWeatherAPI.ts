@@ -9,7 +9,7 @@ export const getWeather = async (lat: number, long: number): Promise<Weather[]> 
         const formattedWeather: Weather[] = weatherResults.data.list?.map((element: DefaultWeather) => {
            return {
                 temperature: element.main.temp,
-                time: new Date(element.dt)
+                time: new Date(element.dt*1000)
             }
         })
         return formattedWeather
