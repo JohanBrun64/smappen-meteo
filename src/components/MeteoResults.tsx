@@ -32,8 +32,6 @@ export const MeteoResults: React.FC<IMeteoResults> = (props) => {
                     <>
                     <h4 key={element.day.toString()}>{element.day}</h4>
                     {element.temperatures.map((el, i) => {
-                        console.log(element.day.toString())
-                        console.log("a"+index+i)
                         return <div key={"a"+index+i}>Temperature for {el.date.toLocaleTimeString('fr-FR', {timeZone: 'CET'})} is {Math.round(el.value)}°C<br /></div>
                     })}
                     </>
