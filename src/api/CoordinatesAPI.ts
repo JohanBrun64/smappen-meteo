@@ -7,8 +7,8 @@ export const getCoordinates = async (place: string): Promise<Coordinates> => {
         const data = peliasResults.data
         const coordinates = data.features[0].geometry.coordinates
         const formatedCoordinates: Coordinates = {
-            lat: coordinates[0],
-            long: coordinates[1]
+            long: coordinates[0],
+            lat: coordinates[1]
         }
         return formatedCoordinates
     }
