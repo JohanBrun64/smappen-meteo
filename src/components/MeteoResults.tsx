@@ -23,7 +23,7 @@ export const MeteoResults: React.FC<IMeteoResults> = (props) => {
         }
     },[props.searchText])
 
-    if(weather) {
+    if(weather && props.searchText.length) {
         return(
             <>
             weather is {weather[0].temperature}°C
