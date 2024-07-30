@@ -28,12 +28,14 @@ export const MeteoResults: React.FC<IMeteoResults> = (props) => {
     if (dayWeather && props.searchText.length) {
         return (
             <>
-                {dayWeather.map((element) => (
+                {dayWeather.map((element, index) => (
                     <>
                     <h4 key={element.day.toString()}>{element.day}</h4>
-                    {element.temperatures.map((el) => (
-                        <div key={el.value.toString()}>Temperature for {el.date.toLocaleTimeString('fr-FR', {timeZone: 'CET'})} is {Math.round(el.value)}°C<br /></div>
-                    ))}
+                    {element.temperatures.map((el, i) => {
+                        console.log(element.day.toString())
+                        console.log("a"+index+i)
+                        return <div key={"a"+index+i}>Temperature for {el.date.toLocaleTimeString('fr-FR', {timeZone: 'CET'})} is {Math.round(el.value)}°C<br /></div>
+                    })}
                     </>
                 ))}
             </>
