@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { Coordinates } from "../types/Coordinates"
 import { getCoordinates } from "../api/CoordinatesAPI"
 import { getWeather } from "../api/OpenWeatherAPI"
+import { Weather } from "../types/Weather"
 
 interface IMeteoResults {
     searchText: string
@@ -9,13 +9,12 @@ interface IMeteoResults {
 
 export const MeteoResults: React.FC<IMeteoResults> = (props) => {
 
-    const [coordinates, setCoordinates] = useState<Coordinates | undefined>()
+    const [weather, setWeather] = useState<Weather[] | undefined>()
 
     useEffect(()=> {
         const getData = async () => {
             const data = await getCoordinates(props.searchText)
-            setCoordinates(data)
-            getWeather(data.lat, data.long)
+            setWeather(await getWeather(data.lat, data.long))
         }
 
         if(props.searchText) {
@@ -24,11 +23,10 @@ export const MeteoResults: React.FC<IMeteoResults> = (props) => {
         }
     },[props.searchText])
 
-    if(coordinates) {
+    if(weather) {
         return(
             <>
-            lat is {coordinates.lat} <br/>
-            long is {coordinates.long}
+            weather is {weather[0].temperature}°C
             </>
         )
     } else {
