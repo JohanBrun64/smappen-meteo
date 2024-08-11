@@ -43,6 +43,92 @@
   z-index: 3;
 }
 
+.center {
+  position: absolute;
+  top:75%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.cloud {
+  background: rgba(255, 255, 255);
+  width: 300px; 
+  height: 100px;
+  border-radius: 150px;	
+  box-shadow: 10px 10px rgba(0,0,0,0.2);
+  animation: move 3s infinite;
+}
+
+.cloud:after {
+  content: '';
+  background: rgba(255, 255, 255);
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: -50px;
+  left: 50px;
+}
+
+.cloud:before {
+  content: '';
+  background: rgba(255, 255, 255);
+  position: absolute;
+  width: 170px;
+  height: 150px;
+  border-radius: 50%;
+  top: -90px;
+  right: 40px;
+}
+
+@keyframes move {
+  0% {
+    transform: translatex(0);
+  }
+  50% {
+    transform: translatex(-40px);
+  }
+}
+
 .Home {
-  margin-top: 150px;
+  margin-top: 100px;
+}
+
+.Title {
+  margin-top: 100px;
+  font-size: 100px;
+  color: #8942C6;
+  text-shadow: #F51864 5px 5px;
+}
+
+.cardGrid {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.card {
+  flex: 1 1 0;
+  margin: 10px;
+  background-color: white;
+  opacity: 0.5;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.card h4 {
+  color: navy;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.dateTitle {
+  font-size: large;
+}
+
+.search {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }

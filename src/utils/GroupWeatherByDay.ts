@@ -1,4 +1,6 @@
 import { DayWeather, Weather } from "../types/Weather";
+import { getDayName } from "./GetDayName";
+import { getMonthName } from "./GetMonthName";
 
 export const groupWeatherByDay = (weather: Weather[]): DayWeather[] => {
     let actualDay = ""
@@ -9,7 +11,7 @@ export const groupWeatherByDay = (weather: Weather[]): DayWeather[] => {
             daysWeather[index].temperatures.push({value: el.temperature, date: el.time})
         } else {
             const item: DayWeather = {
-                day: el.time.toLocaleDateString('fr-FR'),
+                day: getDayName(el.time.getDay()) + ' ' + el.time.getDate() + ' ' + getMonthName(el.time.getMonth()),
                 temperatures: [{value: el.temperature, date: el.time}]
             }
             daysWeather.push(item)

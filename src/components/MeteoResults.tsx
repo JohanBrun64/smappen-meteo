@@ -3,6 +3,7 @@ import { getCoordinates } from "../api/CoordinatesAPI"
 import { getWeather } from "../api/OpenWeatherAPI"
 import { DayWeather } from "../types/Weather"
 import { groupWeatherByDay } from "../utils/GroupWeatherByDay"
+import { MeteoCard } from "./MeteoCard"
 
 interface IMeteoResults {
     searchText: string
@@ -27,19 +28,18 @@ export const MeteoResults: React.FC<IMeteoResults> = (props) => {
 
     if (dayWeather && props.searchText.length) {
         return (
-            <div >
+            <div className="cardGrid">
                 {dayWeather.map((element, index) => (
-                    <>
-                    <h4 key={element.day.toString()}>{element.day}</h4>
-                    {element.temperatures.map((el, i) => {
-                        return <div key={"a"+index+i}>Temperature for {el.date.toLocaleTimeString('fr-FR', {timeZone: 'CET'})} is {Math.round(el.value)}°C<br /></div>
-                    })}
-                    </>
+                    <MeteoCard dayWeather={element} index={index} />
                 ))}
             </div>
         )
 
     } else {
-        return <>No coordinates yet!</>
+        return (
+            <div className="center">
+                <div className="cloud"></div>
+            </div>
+        )
     }
 }

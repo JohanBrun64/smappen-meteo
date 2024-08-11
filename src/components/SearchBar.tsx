@@ -19,6 +19,7 @@ export const SearchBar: React.FC<ISearchBar> = (props) => {
                 variant="outlined"
                 fullWidth
                 label="Search location for weather"
+                InputLabelProps={{style: {fontFamily: "Mulish", color: "black", fontSize: "larger", maxWidth: "400px"}}}
             />
         </div>
         </>

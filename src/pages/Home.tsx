@@ -7,9 +7,12 @@ export const Home: React.FC = () => {
     const [searchText, setSearchText] = useState("")
 
     return (
-        <div className="Home">
-        <SearchBar setSearchText={setSearchText}/>
-        <MeteoResults searchText={searchText}/>
-        </div>
+        <>
+            <h1 className="Title">smappen météo</h1>
+            <div className="Home">
+                <SearchBar setSearchText={setSearchText}/>
+                <MeteoResults searchText={searchText}/>
+            </div>       
+        </>
     )
 }
