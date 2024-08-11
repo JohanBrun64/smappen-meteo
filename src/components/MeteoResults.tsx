@@ -4,6 +4,7 @@ import { getWeather } from "../api/OpenWeatherAPI"
 import { DayWeather } from "../types/Weather"
 import { groupWeatherByDay } from "../utils/GroupWeatherByDay"
 import { MeteoCard } from "./MeteoCard"
+import { Cloud } from "./Cloud"
 
 interface IMeteoResults {
     searchText: string
@@ -37,9 +38,7 @@ export const MeteoResults: React.FC<IMeteoResults> = (props) => {
 
     } else {
         return (
-            <div className="center">
-                <div className="cloud"></div>
-            </div>
+            <Cloud />
         )
     }
 }

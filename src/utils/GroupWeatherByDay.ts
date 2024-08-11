@@ -11,7 +11,7 @@ export const groupWeatherByDay = (weather: Weather[]): DayWeather[] => {
             daysWeather[index].temperatures.push({value: el.temperature, date: el.time})
         } else {
             const item: DayWeather = {
-                day: getDayName(el.time.getDay()) + ' ' + el.time.getDate() + ' ' + getMonthName(el.time.getMonth()),
+                day: `${getDayName(el.time.getDay())} ${el.time.getDate()} ${getMonthName(el.time.getMonth())}`,
                 temperatures: [{value: el.temperature, date: el.time}]
             }
             daysWeather.push(item)

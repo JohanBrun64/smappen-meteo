@@ -11,17 +11,15 @@ export const SearchBar: React.FC<ISearchBar> = (props) => {
     }
 
     return(
-        <>
         <div className="search">
             <TextField
                 id="outlined-basic"
                 onChange={searchHandler}
                 variant="outlined"
                 fullWidth
-                label="Search location for weather"
-                InputLabelProps={{style: {fontFamily: "Mulish", color: "black", fontSize: "larger", maxWidth: "400px"}}}
+                label="Rechercher la météo pour une ville, un lieu..."
+                InputLabelProps={{style: {fontFamily: "Mulish", color: "black", fontSize: "larger"}}}
             />
         </div>
-        </>
     )
 }
