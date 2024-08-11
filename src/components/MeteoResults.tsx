@@ -27,7 +27,7 @@ export const MeteoResults: React.FC<IMeteoResults> = (props) => {
 
     if (dayWeather && props.searchText.length) {
         return (
-            <>
+            <div >
                 {dayWeather.map((element, index) => (
                     <>
                     <h4 key={element.day.toString()}>{element.day}</h4>
@@ -36,7 +36,7 @@ export const MeteoResults: React.FC<IMeteoResults> = (props) => {
                     })}
                     </>
                 ))}
-            </>
+            </div>
         )
 
     } else {
