@@ -17,7 +17,8 @@
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vh;
   background: #87CEEB; /* Sky blue background */
   overflow: hidden;
   position: relative;
